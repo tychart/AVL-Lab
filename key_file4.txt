@@ -1,165 +1,41 @@
-Add 1 True
-Add 2 True
-Add 3 True
-PrintBST
-0:  2 
-1:  1 3 
+--- Test 4 output ---
 
-Add 3 False
-Add 2 False
-Add 1 False
-PrintBST
-0:  2 
-1:  1 3 
+Pretty printing the tree...
+Empty tree
 
-Remove 5 False
-Remove 4 False
-PrintBST
-0:  2 
-1:  1 3 
+Attempting to insert 4 into the tree...true
+Pretty printing the tree...
 
-Remove 3 True
-PrintBST
-0:  2 
-1:  1 
+ 4
 
-Remove 2 True
-PrintBST
-0:  1 
+Attempting to insert 5 into the tree...true
+Pretty printing the tree...
 
-Remove 3 False
-Remove 2 False
-PrintBST
-0:  1 
+   4
 
-Remove 1 True
-PrintBST
-BST is empty
+     5
 
-Add 8 True
-Add 12 True
-Add 14 True
-Add 15 True
-Add 13 True
-Add 10 True
-Add 11 True
-Add 9 True
-Add 4 True
-Add 6 True
-Add 5 True
-Add 7 True
-Add 2 True
-Add 3 True
-Add 1 True
-PrintBST
-0:  8 
-1:  5 12 
-2:  3 6 10 14 
-3:  2 4 7 9 11 13 15 
-4:  1 
+Attempting to insert 3 into the tree...true
+Pretty printing the tree...
 
-Clear
-Add 1 True
-Add 2 True
-Add 3 True
-Add 4 True
-Add 5 True
-Add 6 True
-Add 7 True
-Add 8 True
-Add 9 True
-Add 10 True
-Add 11 True
-Add 12 True
-Add 13 True
-Add 14 True
-Add 15 True
-PrintBST
-0:  8 
-1:  4 12 
-2:  2 6 10 14 
-3:  1 3 5 7 9 11 13 15 
+   4
 
-Clear
-Add 15 True
-Add 14 True
-Add 7 True
-Add 5 True
-Add 9 True
-Add 3 True
-Add 6 True
-Add 8 True
-Add 12 True
-Add 1 True
-Add 11 True
-Add 13 True
-Add 2 True
-Add 10 True
-PrintBST
-0:  7 
-1:  5 12 
-2:  2 6 9 14 
-3:  1 3 8 11 13 15 
-4:  10 
+ 3   5
 
-Remove 3 True
-PrintBST
-0:  7 
-1:  5 12 
-2:  2 6 9 14 
-3:  1 8 11 13 15 
-4:  10 
+Attempting to insert 1 into the tree...true
+Pretty printing the tree...
 
-Remove 5 True
-PrintBST
-0:  9 
-1:  7 12 
-2:  2 8 11 14 
-3:  1 6 10 13 15 
+       4
 
-Remove 2 True
-PrintBST
-0:  9 
-1:  7 12 
-2:  1 8 11 14 
-3:  6 10 13 15 
+   3       5
 
-Remove 8 True
-PrintBST
-0:  9 
-1:  6 12 
-2:  1 7 11 14 
-3:  10 13 15 
+ 1            
 
-Remove 9 True
-PrintBST
-0:  7 
-1:  6 12 
-2:  1 11 14 
-3:  10 13 15 
+Attempting to insert 2 into the tree...true
+Pretty printing the tree...
 
-Remove 7 True
-PrintBST
-0:  12 
-1:  6 14 
-2:  1 11 13 15 
-3:  10 
+       4
 
-Remove 1 True
-PrintBST
-0:  12 
-1:  10 14 
-2:  6 11 13 15 
+   2       5
 
-Remove 6 True
-PrintBST
-0:  12 
-1:  10 14 
-2:  11 13 15 
-
-Remove 14 True
-PrintBST
-0:  12 
-1:  10 13 
-2:  11 15 
-
+ 1   3        
