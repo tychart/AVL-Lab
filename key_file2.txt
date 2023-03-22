@@ -1,6 +1,7 @@
 --- Test 2 output ---
 
 Pretty printing the tree...
+
 Empty tree
 
 Attempting to insert 3 into the tree...true

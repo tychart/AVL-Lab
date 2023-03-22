@@ -1,6 +1,7 @@
 --- Test 15 output ---
 
 Pretty printing the tree...
+
 Empty tree
 Inserting 4, 3, 6, 2, 5, 8, 7, and 9 into the tree...
 Pretty printing the tree...
@@ -21,30 +22,3 @@ Pretty printing the tree...
    4       8
 
  3   5   7   9
-
-Checking that 6 is at the head of the tree...true
-Attempting to remove 6 from the tree...true
-
-Checking that 5 is at the head of the tree...true
-Attempting to remove 5 from the tree...true
-
-Checking that 4 is at the head of the tree...true
-Attempting to remove 4 from the tree...true
-
-Checking that 8 is at the head of the tree...true
-Attempting to remove 8 from the tree...true
-
-Checking that 7 is at the head of the tree...true
-Attempting to remove 7 from the tree...true
-
-Checking that 3 is at the head of the tree...true
-Attempting to remove 3 from the tree...true
-
-Attempting to remove 5 from the tree...false
-
-Checking that 9 is at the head of the tree...true
-Attempting to remove 9 from the tree...true
-
-Pretty printing the tree...
-
-Empty tree

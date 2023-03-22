@@ -3,415 +3,257 @@
 #include "AVL.h"
 #include "printing.h"
 
+void pretty_print_with_header(const AVLInterface &tree) {
+    std::cout << "Pretty printing the tree...\n" << std::endl;
+    pretty_print_tree(tree);
+}
+
+void insert_with_message(AVLInterface &tree, int item) {
+    std::cout << "\nAttempting to insert " << item << " into the tree..."
+              << std::boolalpha << tree.insert(item) << std::endl;
+}
+
+void contains_with_message(const AVLInterface &tree, int item) {
+    std::cout << "tree.contains(" << item << ") = " << std::boolalpha
+              << tree.contains(item) << std::endl;
+}
+
+void remove_with_message(AVLInterface &tree, int item) {
+    std::cout << "\nAttempting to remove " << item << " from the tree..."
+              << std::boolalpha << tree.remove(item) << std::endl;
+}
+
+void check_and_remove_head_with_message(AVLInterface &tree, int head) {
+    std::cout << "\nChecking that " << head << " is at the head of the tree..."
+              << std::boolalpha << (tree.getRootNode()->data == head) << std::endl;
+    std::cout << "Attempting to remove " << head << " from the tree..." << std::boolalpha << tree.remove(head)
+              << std::endl;
+}
+
+void print_size(const AVLInterface &tree) {
+    std::cout << "tree.size() = " << tree.size() << std::endl;
+}
+
 void test1() {
-    std::cout << "--- Test 1 output ---" << std::endl;
+    std::cout << "--- Test 1 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 1);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 2);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 3);
+    pretty_print_with_header(tree);
 }
 
 void test2() {
-    std::cout << "--- Test 2 output ---" << std::endl;
+    std::cout << "--- Test 2 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 3);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 2);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 1);
+    pretty_print_with_header(tree);
 }
 
 void test3() {
-    std::cout << "--- Test 3 output ---" << std::endl;
+    std::cout << "--- Test 3 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 4, 5, 3, and 2 into the tree..." << std::endl;
+    tree.insert(4);
+    tree.insert(5);
+    tree.insert(3);
+    tree.insert(2);
 
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 1);
+    pretty_print_with_header(tree);
 }
 
 void test4() {
-    std::cout << "--- Test 4 output ---" << std::endl;
+    std::cout << "--- Test 4 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 4, 5, 3, and 1 into the tree..." << std::endl;
+    tree.insert(4);
+    tree.insert(5);
+    tree.insert(3);
+    tree.insert(1);
 
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 2);
+    pretty_print_with_header(tree);
 }
 
 void test5() {
-    std::cout << "--- Test 5 output ---" << std::endl;
+    std::cout << "--- Test 5 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 2, 1, 3, and 4 into the tree..." << std::endl;
+    tree.insert(2);
+    tree.insert(1);
+    tree.insert(3);
+    tree.insert(4);
 
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 5);
+    pretty_print_with_header(tree);
 }
 
 void test6() {
-    std::cout << "--- Test 6 output ---" << std::endl;
+    std::cout << "--- Test 6 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 2, 1, 3, and 5 into the tree..." << std::endl;
+    tree.insert(2);
+    tree.insert(1);
+    tree.insert(3);
+    tree.insert(5);
 
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 4);
+    pretty_print_with_header(tree);
 }
 
 void test7() {
-    std::cout << "--- Test 7 output ---" << std::endl;
+    std::cout << "--- Test 7 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 4, 2, 8, 1, 3, 6, 10, 5, 7, 9, and 11 into the tree..." << std::endl;
+    tree.insert(4);
+    tree.insert(2);
+    tree.insert(8);
+    tree.insert(1);
+    tree.insert(3);
+    tree.insert(6);
+    tree.insert(10);
+    tree.insert(5);
+    tree.insert(7);
+    tree.insert(9);
+    tree.insert(11);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 8 into the tree..." << std::boolalpha << tree.insert(8) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 6 into the tree..." << std::boolalpha << tree.insert(6) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 7 into the tree..." << std::boolalpha << tree.insert(7) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 9 into the tree..." << std::boolalpha << tree.insert(9) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 11 into the tree..." << std::boolalpha << tree.insert(11) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 12 into the tree..." << std::boolalpha << tree.insert(12) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 12);
+    pretty_print_with_header(tree);
 }
 
 void test8() {
-    std::cout << "--- Test 8 output ---" << std::endl;
+    std::cout << "--- Test 8 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 4, 2, 9, 1, 3, 6, 11, 5, 7, 10, and 12 into the tree..." << std::endl;
+    tree.insert(4);
+    tree.insert(2);
+    tree.insert(9);
+    tree.insert(1);
+    tree.insert(3);
+    tree.insert(6);
+    tree.insert(11);
+    tree.insert(5);
+    tree.insert(7);
+    tree.insert(10);
+    tree.insert(12);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 9 into the tree..." << std::boolalpha << tree.insert(9) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 6 into the tree..." << std::boolalpha << tree.insert(6) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 11 into the tree..." << std::boolalpha << tree.insert(11) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 7 into the tree..." << std::boolalpha << tree.insert(7) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 12 into the tree..." << std::boolalpha << tree.insert(12) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 11 into the tree..." << std::boolalpha << tree.insert(11) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 8 into the tree..." << std::boolalpha << tree.insert(8) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 8);
+    pretty_print_with_header(tree);
 }
 
 void test9() {
-    std::cout << "--- Test 9 output ---" << std::endl;
+    std::cout << "--- Test 9 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 9 into the tree..." << std::boolalpha << tree.insert(9) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 9, 5, 11, 3, 7, 10, 12, 2, 4, 6, and 8 into the tree..." << std::endl;
+    tree.insert(9);
+    tree.insert(5);
+    tree.insert(11);
+    tree.insert(3);
+    tree.insert(7);
+    tree.insert(10);
+    tree.insert(12);
+    tree.insert(2);
+    tree.insert(4);
+    tree.insert(6);
+    tree.insert(8);
 
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 11 into the tree..." << std::boolalpha << tree.insert(11) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 7 into the tree..." << std::boolalpha << tree.insert(7) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 12 into the tree..." << std::boolalpha << tree.insert(12) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 7 into the tree..." << std::boolalpha << tree.insert(7) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 6 into the tree..." << std::boolalpha << tree.insert(6) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 8 into the tree..." << std::boolalpha << tree.insert(8) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 1);
+    pretty_print_with_header(tree);
 }
 
 void test10() {
-    std::cout << "--- Test 10 output ---" << std::endl;
+    std::cout << "--- Test 10 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 9 into the tree..." << std::boolalpha << tree.insert(9) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    std::cout << "\nInserting 9, 4, 11, 2, 7, 10, 12, 1, 3, 5, and 8 into the tree..." << std::endl;
+    tree.insert(9);
+    tree.insert(4);
+    tree.insert(11);
+    tree.insert(2);
+    tree.insert(7);
+    tree.insert(10);
+    tree.insert(12);
+    tree.insert(1);
+    tree.insert(3);
+    tree.insert(5);
+    tree.insert(8);
 
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to insert 11 into the tree..." << std::boolalpha << tree.insert(11) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 7 into the tree..." << std::boolalpha << tree.insert(7) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 12 into the tree..." << std::boolalpha << tree.insert(12) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 8 into the tree..." << std::boolalpha << tree.insert(8) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nAttempting to insert 6 into the tree..." << std::boolalpha << tree.insert(6) << std::endl;
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    insert_with_message(tree, 6);
+    pretty_print_with_header(tree);
 }
 
 void test11() {
-    std::cout << "--- Test 11 output ---" << std::endl;
+    std::cout << "--- Test 11 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "\nInserting 8, 4, 12, 2, 6, 10, 14, 1, 3, 5,\n          9, 11, 13, and 15 into the tree..."
               << std::endl;
@@ -430,27 +272,26 @@ void test11() {
     tree.insert(13);
     tree.insert(15);
 
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
+    std::cout << std::endl;
 
-    std::cout << "\ntree.contains(14) = " << std::boolalpha << tree.contains(14) << std::endl;
-    std::cout << "tree.contains(4) = " << std::boolalpha << tree.contains(4) << std::endl;
-    std::cout << "tree.contains(5) = " << std::boolalpha << tree.contains(5) << std::endl;
-    std::cout << "tree.contains(15) = " << std::boolalpha << tree.contains(15) << std::endl;
-    std::cout << "tree.contains(7) = " << std::boolalpha << tree.contains(7) << std::endl;
-    std::cout << "tree.contains(2) = " << std::boolalpha << tree.contains(2) << std::endl;
-    std::cout << "tree.contains(-3) = " << std::boolalpha << tree.contains(-3) << std::endl;
-    std::cout << "tree.contains(17) = " << std::boolalpha << tree.contains(17) << std::endl;
-    std::cout << "tree.contains(35) = " << std::boolalpha << tree.contains(35) << std::endl;
+    contains_with_message(tree, 14);
+    contains_with_message(tree, 4);
+    contains_with_message(tree, 5);
+    contains_with_message(tree, 15);
+    contains_with_message(tree, 7);
+    contains_with_message(tree, 2);
+    contains_with_message(tree, -3);
+    contains_with_message(tree, 17);
+    contains_with_message(tree, 35);
 }
 
 void test12() {
-    std::cout << "--- Test 12 output ---" << std::endl;
+    std::cout << "--- Test 12 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "Inserting 6, 4, 7, 2, 5, 9, 1, and 3 into the tree..." << std::endl;
     tree.insert(6);
@@ -462,54 +303,18 @@ void test12() {
     tree.insert(1);
     tree.insert(3);
 
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to remove 9 from the tree..." << std::boolalpha << tree.remove(9) << std::endl;
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nChecking that 4 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 4)
-              << std::endl;
-    std::cout << "Attempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-
-    std::cout << "\nChecking that 3 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 3)
-              << std::endl;
-    std::cout << "Attempting to remove 3 from the tree..." << std::boolalpha << tree.remove(3) << std::endl;
-
-    std::cout << "\nChecking that 2 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 2)
-              << std::endl;
-    std::cout << "Attempting to remove 2 from the tree..." << std::boolalpha << tree.remove(2) << std::endl;
-
-    std::cout << "\nAttempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-
-    std::cout << "\nChecking that 6 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 6)
-              << std::endl;
-    std::cout << "Attempting to remove 6 from the tree..." << std::boolalpha << tree.remove(6) << std::endl;
-
-    std::cout << "\nChecking that 5 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 5)
-              << std::endl;
-    std::cout << "Attempting to remove 5 from the tree..." << std::boolalpha << tree.remove(5) << std::endl;
-
-    std::cout << "\nChecking that 1 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 1)
-              << std::endl;
-    std::cout << "Attempting to remove 1 from the tree..." << std::boolalpha << tree.remove(1) << std::endl;
-
-    std::cout << "\nChecking that 7 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 7)
-              << std::endl;
-    std::cout << "Attempting to remove 7 from the tree..." << std::boolalpha << tree.remove(7) << std::endl;
-
-    std::cout << "\nPretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    remove_with_message(tree, 9);
+    pretty_print_with_header(tree);
 }
 
 void test13() {
-    std::cout << "--- Test 13 output ---" << std::endl;
+    std::cout << "--- Test 13 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "Inserting 6, 2, 7, 1, 4, 9, 3, and 5 into the tree..." << std::endl;
     tree.insert(6);
@@ -521,54 +326,18 @@ void test13() {
     tree.insert(3);
     tree.insert(5);
 
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to remove 9 from the tree..." << std::boolalpha << tree.remove(9) << std::endl;
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nChecking that 4 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 4)
-              << std::endl;
-    std::cout << "Attempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-
-    std::cout << "\nChecking that 3 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 3)
-              << std::endl;
-    std::cout << "Attempting to remove 3 from the tree..." << std::boolalpha << tree.remove(3) << std::endl;
-
-    std::cout << "\nChecking that 2 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 2)
-              << std::endl;
-    std::cout << "Attempting to remove 2 from the tree..." << std::boolalpha << tree.remove(2) << std::endl;
-
-    std::cout << "\nChecking that 6 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 6)
-              << std::endl;
-    std::cout << "Attempting to remove 6 from the tree..." << std::boolalpha << tree.remove(6) << std::endl;
-
-    std::cout << "\nChecking that 5 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 5)
-              << std::endl;
-    std::cout << "Attempting to remove 5 from the tree..." << std::boolalpha << tree.remove(5) << std::endl;
-
-    std::cout << "\nChecking that 1 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 1)
-              << std::endl;
-    std::cout << "Attempting to remove 1 from the tree..." << std::boolalpha << tree.remove(1) << std::endl;
-
-    std::cout << "\nAttempting to remove 6 from the tree..." << std::boolalpha << tree.remove(6) << std::endl;
-
-    std::cout << "\nChecking that 7 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 7)
-              << std::endl;
-    std::cout << "Attempting to remove 7 from the tree..." << std::boolalpha << tree.remove(7) << std::endl;
-
-    std::cout << "\nPretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    remove_with_message(tree, 9);
+    pretty_print_with_header(tree);
 }
 
 void test14() {
-    std::cout << "--- Test 14 output ---" << std::endl;
+    std::cout << "--- Test 14 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "Inserting 4, 3, 8, 2, 6, 9, 5, and 7 into the tree..." << std::endl;
     tree.insert(4);
@@ -580,54 +349,18 @@ void test14() {
     tree.insert(5);
     tree.insert(7);
 
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to remove 2 from the tree..." << std::boolalpha << tree.remove(2) << std::endl;
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nChecking that 6 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 6)
-              << std::endl;
-    std::cout << "Attempting to remove 6 from the tree..." << std::boolalpha << tree.remove(6) << std::endl;
-
-    std::cout << "\nAttempting to remove 2 from the tree..." << std::boolalpha << tree.remove(2) << std::endl;
-
-    std::cout << "\nChecking that 5 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 5)
-              << std::endl;
-    std::cout << "Attempting to remove 5 from the tree..." << std::boolalpha << tree.remove(5) << std::endl;
-
-    std::cout << "\nChecking that 4 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 4)
-              << std::endl;
-    std::cout << "Attempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-
-    std::cout << "\nChecking that 8 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 8)
-              << std::endl;
-    std::cout << "Attempting to remove 8 from the tree..." << std::boolalpha << tree.remove(8) << std::endl;
-
-    std::cout << "\nChecking that 7 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 7)
-              << std::endl;
-    std::cout << "Attempting to remove 7 from the tree..." << std::boolalpha << tree.remove(7) << std::endl;
-
-    std::cout << "\nChecking that 3 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 3)
-              << std::endl;
-    std::cout << "Attempting to remove 3 from the tree..." << std::boolalpha << tree.remove(3) << std::endl;
-
-    std::cout << "\nChecking that 9 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 9)
-              << std::endl;
-    std::cout << "Attempting to remove 9 from the tree..." << std::boolalpha << tree.remove(9) << std::endl;
-
-    std::cout << "\nPretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    remove_with_message(tree, 2);
+    pretty_print_with_header(tree);
 }
 
 void test15() {
-    std::cout << "--- Test 15 output ---" << std::endl;
+    std::cout << "--- Test 15 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "Inserting 4, 3, 6, 2, 5, 8, 7, and 9 into the tree..." << std::endl;
     tree.insert(4);
@@ -639,54 +372,18 @@ void test15() {
     tree.insert(7);
     tree.insert(9);
 
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to remove 2 from the tree..." << std::boolalpha << tree.remove(2) << std::endl;
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
-
-    std::cout << "\nChecking that 6 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 6)
-              << std::endl;
-    std::cout << "Attempting to remove 6 from the tree..." << std::boolalpha << tree.remove(6) << std::endl;
-
-    std::cout << "\nChecking that 5 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 5)
-              << std::endl;
-    std::cout << "Attempting to remove 5 from the tree..." << std::boolalpha << tree.remove(5) << std::endl;
-
-    std::cout << "\nChecking that 4 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 4)
-              << std::endl;
-    std::cout << "Attempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-
-    std::cout << "\nChecking that 8 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 8)
-              << std::endl;
-    std::cout << "Attempting to remove 8 from the tree..." << std::boolalpha << tree.remove(8) << std::endl;
-
-    std::cout << "\nChecking that 7 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 7)
-              << std::endl;
-    std::cout << "Attempting to remove 7 from the tree..." << std::boolalpha << tree.remove(7) << std::endl;
-
-    std::cout << "\nChecking that 3 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 3)
-              << std::endl;
-    std::cout << "Attempting to remove 3 from the tree..." << std::boolalpha << tree.remove(3) << std::endl;
-
-    std::cout << "\nAttempting to remove 5 from the tree..." << std::boolalpha << tree.remove(5) << std::endl;
-
-    std::cout << "\nChecking that 9 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 9)
-              << std::endl;
-    std::cout << "Attempting to remove 9 from the tree..." << std::boolalpha << tree.remove(9) << std::endl;
-
-    std::cout << "\nPretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    remove_with_message(tree, 2);
+    pretty_print_with_header(tree);
 }
 
 void test16() {
-    std::cout << "--- Test 16 output ---" << std::endl;
+    std::cout << "--- Test 16 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree..." << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "Inserting 10, 6, 14, 4, 8, 12, 16, 2, 5, 7, 11, 13, 15, 17, 1, and 3 into the tree..." << std::endl;
     tree.insert(10);
@@ -706,174 +403,123 @@ void test16() {
     tree.insert(1);
     tree.insert(3);
 
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nAttempting to remove 10 from the tree..." << std::boolalpha << tree.remove(10) << std::endl;
-    std::cout << "Pretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    remove_with_message(tree, 10);
+    pretty_print_with_header(tree);
 
-    std::cout << "\nChecking that 8 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 8)
-              << std::endl;
-    std::cout << "Attempting to remove 8 from the tree..." << std::boolalpha << tree.remove(8) << std::endl;
+    check_and_remove_head_with_message(tree, 8);
+    check_and_remove_head_with_message(tree, 7);
+    check_and_remove_head_with_message(tree, 6);
+    check_and_remove_head_with_message(tree, 5);
+    check_and_remove_head_with_message(tree, 4);
+    check_and_remove_head_with_message(tree, 3);
+    check_and_remove_head_with_message(tree, 14);
+    check_and_remove_head_with_message(tree, 13);
+    check_and_remove_head_with_message(tree, 12);
+    check_and_remove_head_with_message(tree, 11);
+    check_and_remove_head_with_message(tree, 2);
+    remove_with_message(tree, 13);
+    check_and_remove_head_with_message(tree, 16);
+    check_and_remove_head_with_message(tree, 15);
+    remove_with_message(tree, 3);
+    check_and_remove_head_with_message(tree, 1);
+    check_and_remove_head_with_message(tree, 17);
 
-    std::cout << "\nChecking that 7 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 7)
-              << std::endl;
-    std::cout << "Attempting to remove 7 from the tree..." << std::boolalpha << tree.remove(7) << std::endl;
-
-    std::cout << "\nChecking that 6 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 6)
-              << std::endl;
-    std::cout << "Attempting to remove 6 from the tree..." << std::boolalpha << tree.remove(6) << std::endl;
-
-    std::cout << "\nChecking that 5 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 5)
-              << std::endl;
-    std::cout << "Attempting to remove 5 from the tree..." << std::boolalpha << tree.remove(5) << std::endl;
-
-    std::cout << "\nChecking that 4 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 4)
-              << std::endl;
-    std::cout << "Attempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-
-    std::cout << "\nChecking that 3 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 3)
-              << std::endl;
-    std::cout << "Attempting to remove 3 from the tree..." << std::boolalpha << tree.remove(3) << std::endl;
-
-    std::cout << "\nChecking that 14 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 14) << std::endl;
-    std::cout << "Attempting to remove 14 from the tree..." << std::boolalpha << tree.remove(14) << std::endl;
-
-    std::cout << "\nChecking that 13 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 13) << std::endl;
-    std::cout << "Attempting to remove 13 from the tree..." << std::boolalpha << tree.remove(13) << std::endl;
-
-    std::cout << "\nChecking that 12 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 12) << std::endl;
-    std::cout << "Attempting to remove 12 from the tree..." << std::boolalpha << tree.remove(12) << std::endl;
-
-    std::cout << "\nChecking that 11 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 11) << std::endl;
-    std::cout << "Attempting to remove 11 from the tree..." << std::boolalpha << tree.remove(11) << std::endl;
-
-    std::cout << "\nChecking that 2 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 2)
-              << std::endl;
-    std::cout << "Attempting to remove 2 from the tree..." << std::boolalpha << tree.remove(2) << std::endl;
-
-    std::cout << "\nAttempting to remove 13 from the tree..." << std::boolalpha << tree.remove(13) << std::endl;
-
-    std::cout << "\nChecking that 16 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 16) << std::endl;
-    std::cout << "Attempting to remove 16 from the tree..." << std::boolalpha << tree.remove(16) << std::endl;
-
-    std::cout << "\nChecking that 15 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 15) << std::endl;
-    std::cout << "Attempting to remove 15 from the tree..." << std::boolalpha << tree.remove(15) << std::endl;
-
-    std::cout << "\nAttempting to remove 3 from the tree..." << std::boolalpha << tree.remove(3) << std::endl;
-
-    std::cout << "\nChecking that 1 is at the head of the tree..." << std::boolalpha << (tree.getRootNode()->data == 1)
-              << std::endl;
-    std::cout << "Attempting to remove 1 from the tree..." << std::boolalpha << tree.remove(1) << std::endl;
-
-    std::cout << "\nChecking that 17 is at the head of the tree..." << std::boolalpha
-              << (tree.getRootNode()->data == 17) << std::endl;
-    std::cout << "Attempting to remove 17 from the tree..." << std::boolalpha << tree.remove(17) << std::endl;
-
-    std::cout << "\nPretty printing the tree..." << std::endl << std::endl;
-    pretty_print_tree(tree);
+    std::cout << std::endl;
+    pretty_print_with_header(tree);
 }
 
 void test17() {
-    std::cout << "--- Test 17 output ---" << std::endl;
+    std::cout << "--- Test 17 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\ntree.size() = " << tree.size() << std::endl;
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 1 into the tree..." << std::boolalpha << tree.insert(1) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 1);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 2 into the tree..." << std::boolalpha << tree.insert(2) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 2);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 3);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 4 into the tree..." << std::boolalpha << tree.insert(4) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 4);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 5);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 6 into the tree..." << std::boolalpha << tree.insert(6) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 6);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 7 into the tree..." << std::boolalpha << tree.insert(7) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 7);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 3 into the tree..." << std::boolalpha << tree.insert(3) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 3);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 8 into the tree..." << std::boolalpha << tree.insert(8) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 8);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 9 into the tree..." << std::boolalpha << tree.insert(9) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 9);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 5 into the tree..." << std::boolalpha << tree.insert(5) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 5);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 10);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 8 into the tree..." << std::boolalpha << tree.insert(8) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 8);
+    print_size(tree);
 
-    std::cout << "\nAttempting to insert 10 into the tree..." << std::boolalpha << tree.insert(10) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    insert_with_message(tree, 10);
+    print_size(tree);
 
-    std::cout << "\nAttempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    remove_with_message(tree, 4);
+    print_size(tree);
 
-    std::cout << "\nAttempting to remove 7 from the tree..." << std::boolalpha << tree.remove(7) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    remove_with_message(tree, 7);
+    print_size(tree);
 
-    std::cout << "\nAttempting to remove 9 from the tree..." << std::boolalpha << tree.remove(9) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    remove_with_message(tree, 9);
+    print_size(tree);
 
-    std::cout << "\nAttempting to remove 4 from the tree..." << std::boolalpha << tree.remove(4) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    remove_with_message(tree, 4);
+    print_size(tree);
 
-    std::cout << "\nAttempting to remove 10 from the tree..." << std::boolalpha << tree.remove(10) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    remove_with_message(tree, 10);
+    print_size(tree);
 
-    std::cout << "\nAttempting to remove 9 from the tree..." << std::boolalpha << tree.remove(9) << std::endl;
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    remove_with_message(tree, 9);
+    print_size(tree);
 
     std::cout << "\nClearing the tree..." << std::endl;
     tree.clear();
-    std::cout << "tree.size() = " << tree.size() << std::endl;
+    print_size(tree);
 }
 
 void test18() {
-    std::cout << "--- Test 18 output ---" << std::endl;
+    std::cout << "--- Test 18 output ---\n" << std::endl;
 
     AVL tree;
 
-    std::cout << "\nPretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "\nInserting 1, 2, and 3 into the tree..." << std::endl;
     tree.insert(1);
     tree.insert(2);
     tree.insert(3);
 
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 
     std::cout << "\nClearing the tree..." << std::endl;
     tree.clear();
 
-    std::cout << "Pretty printing the tree...\n" << std::endl;
-    pretty_print_tree(tree);
+    pretty_print_with_header(tree);
 }
 
 int main(int argc, char *argv[]) {

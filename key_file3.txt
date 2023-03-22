@@ -1,28 +1,10 @@
 --- Test 3 output ---
 
 Pretty printing the tree...
+
 Empty tree
 
-Attempting to insert 4 into the tree...true
-Pretty printing the tree...
-
- 4
-
-Attempting to insert 5 into the tree...true
-Pretty printing the tree...
-
-   4
-
-     5
-
-Attempting to insert 3 into the tree...true
-Pretty printing the tree...
-
-   4
-
- 3   5
-
-Attempting to insert 2 into the tree...true
+Inserting 4, 5, 3, and 2 into the tree...
 Pretty printing the tree...
 
        4
