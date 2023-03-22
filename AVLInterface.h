@@ -14,9 +14,9 @@ public:
 
     virtual bool remove(int data) = 0;
 
-    virtual bool contains(int data) = 0;
+    virtual bool contains(int data) const = 0;
 
     virtual void clear() = 0;
 
-    virtual int size() = 0;
+    virtual int size() const = 0;
 };
