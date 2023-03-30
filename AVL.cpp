@@ -13,6 +13,13 @@ AVL::~AVL() {
     clear();
 }
 
+int abs(int inNum) {
+    if (inNum > 0) {
+        return inNum;
+    }
+    return -inNum;
+}
+
 Node* AVL::getRootNode() const {
     return rootNode;
 }
@@ -143,8 +150,42 @@ int AVL::size() const {
 }
 
 void AVL::_rebalance(Node* currNode) {
+    if (abs(_getBalance(currNode)) >= 2) {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+void AVL::_updateHeight(Node* currNode, int depth) {
+
+    int tempLeft = 0;
+    if (currNode-> left == nullptr && currNode-> right == nullptr) {
+        currNode-> height = 1;
+    }
+    if (currNode-> left != nullptr) { _updateHeight(currNode-> left, depth + 1);}
+    if (currNode-> right != nullptr) { _updateHeight(currNode-> right, depth + 1);}
+
+
 
 }
+
+
+
+
+
+
+
+
+
 
 void AVL::clear() {
     _clear(rootNode);
