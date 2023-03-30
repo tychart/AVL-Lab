@@ -3,6 +3,6 @@ project(avl_lab)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(scratch scratch.cpp PrintStuff.h BST.h BST.cpp)
+add_executable(scratch scratch.cpp PrintStuff.h AVL.h AVL.cpp)
 
-add_executable(tests tests.cpp PrintStuff.h BST.h BST.cpp)
+add_executable(tests tests.cpp PrintStuff.h AVL.h AVL.cpp)

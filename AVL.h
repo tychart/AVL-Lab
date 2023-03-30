@@ -5,10 +5,10 @@
 #pragma once
 
 #include "PrintStuff.h"
-#include "BSTInterface.h"
+#include "AVLInterface.h"
 #include "Node.h"
 
-class BST : public BSTInterface {
+class AVL : public AVLInterface {
 
     Node* rootNode;
 
@@ -25,10 +25,10 @@ class BST : public BSTInterface {
     void _clear(Node* &currNode);
 
 public:
-    BST();
-//    BST(Node rootNode);
+    AVL();
+//    AVL(Node rootNode);
 
-    ~BST();
+    ~AVL();
 
     Node* getRootNode() const;
 

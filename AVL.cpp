@@ -2,22 +2,22 @@
 // Created by tychart on 3/23/23.
 //
 
-#include "BST.h"
+#include "AVL.h"
 
-BST::BST() {
+AVL::AVL() {
     rootNode = nullptr;
 }
 
 // Destructor
-BST::~BST() {
+AVL::~AVL() {
     clear();
 }
 
-Node* BST::getRootNode() const {
+Node* AVL::getRootNode() const {
     return rootNode;
 }
 
-bool BST::_search(int data, Node *currNode) {
+bool AVL::_search(int data, Node *currNode) {
     if(currNode == nullptr) {return false;}
 
     if(currNode-> data == data) {return true;}
@@ -30,13 +30,13 @@ bool BST::_search(int data, Node *currNode) {
 
 }
 
-bool BST::_isLeaf(Node* currNode) {
+bool AVL::_isLeaf(Node* currNode) {
     if(currNode->left == nullptr && currNode-> right == nullptr) {
         return true;
     } else {return false;}
 }
 
-bool BST::insert(int data) {
+bool AVL::insert(int data) {
     if(rootNode == nullptr) {
         rootNode = new Node(data);
         return true;
@@ -46,7 +46,7 @@ bool BST::insert(int data) {
     return _insert(data, rootNode);
 }
 
-bool BST::_insert(int data, Node* currNode) {
+bool AVL::_insert(int data, Node* currNode) {
 
     // Warning: Value already exists, so nothing will be done.
     if(currNode-> data == data) {
@@ -71,11 +71,11 @@ bool BST::_insert(int data, Node* currNode) {
 }
 
 
-bool BST::remove(int data) {
+bool AVL::remove(int data) {
     return _remove(data, rootNode);
 }
 
-bool BST::_remove(int data, Node* &currNode) {
+bool AVL::_remove(int data, Node* &currNode) {
     if(currNode == nullptr) {return false;}
 
     // Will remove if node has no children
@@ -120,7 +120,7 @@ bool BST::_remove(int data, Node* &currNode) {
 
 }
 
-int BST::_getLargestValueInTree(Node* currNode) {
+int AVL::_getLargestValueInTree(Node* currNode) {
     if (currNode-> right == nullptr) {
         return currNode-> data;
     } else {
@@ -128,17 +128,17 @@ int BST::_getLargestValueInTree(Node* currNode) {
     }
 }
 
-bool BST::contains(int data) {
+bool AVL::contains(int data) {
     if(rootNode == nullptr) {return false;}
 
     return _search(data, rootNode);
 }
 
-void BST::clear() {
+void AVL::clear() {
     _clear(rootNode);
 }
 
-void BST::_clear(Node* &currNode) {
+void AVL::_clear(Node* &currNode) {
     if (currNode == nullptr) {return;}
     if (_isLeaf(currNode)) {
         delete currNode;
