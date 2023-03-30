@@ -11,6 +11,7 @@
 class AVL : public AVLInterface {
 
     Node* rootNode;
+    int currSize = 0;
 
     bool _insert(int data, Node* currNode);
 
@@ -21,6 +22,8 @@ class AVL : public AVLInterface {
     bool _isLeaf(Node* currNode);
 
     int _getLargestValueInTree(Node* currNode);
+
+    void _rebalance(Node* currNode);
 
     void _clear(Node* &currNode);
 

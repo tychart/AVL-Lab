@@ -39,11 +39,13 @@ bool AVL::_isLeaf(Node* currNode) {
 bool AVL::insert(int data) {
     if(rootNode == nullptr) {
         rootNode = new Node(data);
+        currSize++;
         return true;
     }
 
-
-    return _insert(data, rootNode);
+    bool temp = _insert(data, rootNode);
+    if (temp) {currSize++;}
+    return temp;
 }
 
 bool AVL::_insert(int data, Node* currNode) {
@@ -72,7 +74,9 @@ bool AVL::_insert(int data, Node* currNode) {
 
 
 bool AVL::remove(int data) {
-    return _remove(data, rootNode);
+    bool temp = _remove(data, rootNode);
+    if (temp) {currSize--;}
+    return temp;
 }
 
 bool AVL::_remove(int data, Node* &currNode) {
@@ -135,6 +139,10 @@ bool AVL::contains(int data) const {
 }
 
 int AVL::size() const {
+    return currSize;
+}
+
+void AVL::_rebalance(Node* currNode) {
 
 }
 
