@@ -14,7 +14,7 @@ class AVL : public AVLInterface {
 
     bool _insert(int data, Node* currNode);
 
-    bool _search(int data, Node* currNode);
+    bool _search(int data, Node* currNode) const;
 
     bool _remove(int data, Node* &currNode);
 
@@ -36,7 +36,9 @@ public:
 
     bool remove(int data);
 
-    bool contains(int data);
+    bool contains(int data) const;
+
+    int size() const;
 
     void clear();
 

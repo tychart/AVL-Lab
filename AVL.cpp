@@ -17,7 +17,7 @@ Node* AVL::getRootNode() const {
     return rootNode;
 }
 
-bool AVL::_search(int data, Node *currNode) {
+bool AVL::_search(int data, Node *currNode) const {
     if(currNode == nullptr) {return false;}
 
     if(currNode-> data == data) {return true;}
@@ -128,10 +128,14 @@ int AVL::_getLargestValueInTree(Node* currNode) {
     }
 }
 
-bool AVL::contains(int data) {
+bool AVL::contains(int data) const {
     if(rootNode == nullptr) {return false;}
 
     return _search(data, rootNode);
+}
+
+int AVL::size() const {
+
 }
 
 void AVL::clear() {

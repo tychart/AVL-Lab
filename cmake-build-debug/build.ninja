@@ -55,8 +55,8 @@ build CMakeFiles/scratch.dir/scratch.cpp.o: CXX_COMPILER__scratch_Debug /home/ty
   OBJECT_DIR = CMakeFiles/scratch.dir
   OBJECT_FILE_DIR = CMakeFiles/scratch.dir
 
-build CMakeFiles/scratch.dir/BST.cpp.o: CXX_COMPILER__scratch_Debug /home/tychart/Documents/CS_235/AVL-Lab/BST.cpp || cmake_object_order_depends_target_scratch
-  DEP_FILE = CMakeFiles/scratch.dir/BST.cpp.o.d
+build CMakeFiles/scratch.dir/AVL.cpp.o: CXX_COMPILER__scratch_Debug /home/tychart/Documents/CS_235/AVL-Lab/AVL.cpp || cmake_object_order_depends_target_scratch
+  DEP_FILE = CMakeFiles/scratch.dir/AVL.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++17
   OBJECT_DIR = CMakeFiles/scratch.dir
   OBJECT_FILE_DIR = CMakeFiles/scratch.dir
@@ -69,7 +69,7 @@ build CMakeFiles/scratch.dir/BST.cpp.o: CXX_COMPILER__scratch_Debug /home/tychar
 #############################################
 # Link the executable scratch
 
-build scratch: CXX_EXECUTABLE_LINKER__scratch_Debug CMakeFiles/scratch.dir/scratch.cpp.o CMakeFiles/scratch.dir/BST.cpp.o
+build scratch: CXX_EXECUTABLE_LINKER__scratch_Debug CMakeFiles/scratch.dir/scratch.cpp.o CMakeFiles/scratch.dir/AVL.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/scratch.dir
   POST_BUILD = :
@@ -92,8 +92,8 @@ build CMakeFiles/tests.dir/tests.cpp.o: CXX_COMPILER__tests_Debug /home/tychart/
   OBJECT_DIR = CMakeFiles/tests.dir
   OBJECT_FILE_DIR = CMakeFiles/tests.dir
 
-build CMakeFiles/tests.dir/BST.cpp.o: CXX_COMPILER__tests_Debug /home/tychart/Documents/CS_235/AVL-Lab/BST.cpp || cmake_object_order_depends_target_tests
-  DEP_FILE = CMakeFiles/tests.dir/BST.cpp.o.d
+build CMakeFiles/tests.dir/AVL.cpp.o: CXX_COMPILER__tests_Debug /home/tychart/Documents/CS_235/AVL-Lab/AVL.cpp || cmake_object_order_depends_target_tests
+  DEP_FILE = CMakeFiles/tests.dir/AVL.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++17
   OBJECT_DIR = CMakeFiles/tests.dir
   OBJECT_FILE_DIR = CMakeFiles/tests.dir
@@ -106,7 +106,7 @@ build CMakeFiles/tests.dir/BST.cpp.o: CXX_COMPILER__tests_Debug /home/tychart/Do
 #############################################
 # Link the executable tests
 
-build tests: CXX_EXECUTABLE_LINKER__tests_Debug CMakeFiles/tests.dir/tests.cpp.o CMakeFiles/tests.dir/BST.cpp.o
+build tests: CXX_EXECUTABLE_LINKER__tests_Debug CMakeFiles/tests.dir/tests.cpp.o CMakeFiles/tests.dir/AVL.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/tests.dir
   POST_BUILD = :
