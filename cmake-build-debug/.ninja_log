@@ -1,0 +1,5 @@
+# ninja log v5
+0	10	1680200362974710710	build.ninja	aa26f03186aca02c
+0	205	1680200363182720454	CMakeFiles/scratch.dir/AVL.cpp.o	ffda2f1a2e62ed17
+0	296	1680200363274724764	CMakeFiles/scratch.dir/scratch.cpp.o	6c20465bb8645e7e
+296	335	1680200363310726451	scratch	c466b3204d7dfa27
