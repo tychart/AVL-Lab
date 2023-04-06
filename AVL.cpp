@@ -95,7 +95,7 @@ bool AVL::_insert(int data, Node* &currNode) {
 bool AVL::remove(int data) {
     bool temp = _remove(data, rootNode);
     if (temp) {currSize--;}
-    if (temp) {_rebalance(rootNode);}
+
     return temp;
 }
 
@@ -118,6 +118,7 @@ bool AVL::_remove(int data, Node* &currNode) {
             int replaceData = _getLargestValueInTree(currNode-> left);
             currNode-> data = replaceData;
             _remove(replaceData, currNode-> left);
+            _rebalance(currNode);
             return true;
         } else if (currNode-> left != nullptr && currNode-> right == nullptr) {
             Node* temp = currNode-> left;
@@ -134,9 +135,13 @@ bool AVL::_remove(int data, Node* &currNode) {
 
 
     if (data < currNode-> data) {
-        return _remove(data, currNode-> left);
+        bool removed = _remove(data, currNode-> left);
+        if (removed) {_rebalance(currNode);}
+        return removed;
     } else {
-        return _remove(data, currNode-> right);
+        bool removed = _remove(data, currNode-> right);
+        if (removed) { _rebalance(currNode);}
+        return removed;
     }
 
 
@@ -261,6 +266,7 @@ void AVL::_updateHeight(Node* currNode) {
 
 void AVL::clear() {
     _clear(rootNode);
+    currSize = 0;
 }
 
 void AVL::_clear(Node* &currNode) {
