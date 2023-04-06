@@ -95,6 +95,7 @@ bool AVL::_insert(int data, Node* &currNode) {
 bool AVL::remove(int data) {
     bool temp = _remove(data, rootNode);
     if (temp) {currSize--;}
+    if (temp) {_rebalance(rootNode);}
     return temp;
 }
 
