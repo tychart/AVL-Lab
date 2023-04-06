@@ -15,6 +15,8 @@ class AVL : public AVLInterface {
 
     int abs(int inNum);
 
+    int max(int inputVar1, int inputVar2);
+
     bool _insert(int data, Node* currNode);
 
     bool _search(int data, Node* currNode) const;
@@ -33,7 +35,7 @@ class AVL : public AVLInterface {
 
     int _getBalance(Node* currNode);
 
-    void _updateHeight(Node* currNode, int depth);
+    void _updateHeight(Node* currNode);
 
 
 

@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/tychart/Documents/CS_235_Temp_Stuff/AVL-Lab/cmake-build-debug",
-		"source" : "/home/tychart/Documents/CS_235_Temp_Stuff/AVL-Lab"
+		"build" : "/home/tychart/Documents/CS_235/AVL-Lab/cmake-build-debug",
+		"source" : "/home/tychart/Documents/CS_235/AVL-Lab"
 	},
 	"version" : 
 	{

@@ -13,11 +13,17 @@ AVL::~AVL() {
     clear();
 }
 
-int abs(int inNum) {
+int AVL::abs(int inNum) {
     if (inNum > 0) {
         return inNum;
     }
     return -inNum;
+}
+
+
+int AVL::max(int inputVar1, int inputVar2) {
+    if (inputVar1 > inputVar2) {return inputVar1;}
+    else {return inputVar2;}
 }
 
 Node* AVL::getRootNode() const {
@@ -155,6 +161,7 @@ void AVL::_rebalance(Node* currNode) {
     }
 }
 
+int _getBalance(Node* currNode);
 
 
 
@@ -164,17 +171,19 @@ void AVL::_rebalance(Node* currNode) {
 
 
 
+void AVL::_updateHeight(Node* currNode) {
 
-void AVL::_updateHeight(Node* currNode, int depth) {
+    currNode-> height = 1 + max(
+        (currNode-> left == nullptr) ? 0 : currNode-> left-> height,
+        (currNode-> right == nullptr) ? 0 : currNode-> right-> height
+    );
 
-    int tempLeft = 0;
-    if (currNode-> left == nullptr && currNode-> right == nullptr) {
-        currNode-> height = 1;
-    }
-    if (currNode-> left != nullptr) { _updateHeight(currNode-> left, depth + 1);}
-    if (currNode-> right != nullptr) { _updateHeight(currNode-> right, depth + 1);}
-
-
+//    int tempLeft = 0;
+//    if (currNode-> left == nullptr && currNode-> right == nullptr) {
+//        currNode-> height = 1;
+//    }
+//    if (currNode-> left != nullptr) { _updateHeight(currNode-> left, depth + 1);}
+//    if (currNode-> right != nullptr) { _updateHeight(currNode-> right, depth + 1);}
 
 }
 
