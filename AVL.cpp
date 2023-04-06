@@ -61,7 +61,7 @@ bool AVL::insert(int data) {
     return temp;
 }
 
-bool AVL::_insert(int data, Node* currNode) {
+bool AVL::_insert(int data, Node* &currNode) {
 
     // Warning: Value already exists, so nothing will be done.
     if(currNode-> data == data) {
@@ -71,16 +71,22 @@ bool AVL::_insert(int data, Node* currNode) {
     if(data < currNode-> data) {
         if(currNode-> left == nullptr) {
             currNode-> left = new Node(data);
+            _rebalance(currNode);
             return true;
         }
-        return _insert(data, currNode-> left);
+        bool completed = _insert(data, currNode-> left);
+        _rebalance(currNode);
+        return completed;
 
     } else {
         if(currNode-> right == nullptr) {
             currNode-> right = new Node(data);
+            _rebalance(currNode);
             return true;
         }
-        return _insert(data, currNode-> right);
+        bool completed = _insert(data, currNode-> right);
+        _rebalance(currNode);
+        return completed;
     }
 
 }
@@ -155,15 +161,70 @@ int AVL::size() const {
     return currSize;
 }
 
-void AVL::_rebalance(Node* currNode) {
-    if (abs(_getBalance(currNode)) >= 2) {
+void AVL::_rebalance(Node* &currNode) {
+    if (currNode == nullptr) {return;}
+
+    _updateHeight(currNode);
+    int rightHeight = currNode->right == nullptr ? 0 : currNode->right->height;
+    int leftHeight = currNode->left == nullptr ? 0 : currNode->left->height;
+    int balance = rightHeight - leftHeight;
+
+    if (balance < -1) { // Left Heavy
+        // Either do right or Left-Right
+        int leftLeftHeight = currNode->left->left == nullptr ? 0 : currNode->left->left->height;
+        int leftRightHeight = currNode->left->right == nullptr ? 0 : currNode->left->right->height;
+
+        if (leftLeftHeight >= leftRightHeight) {
+            _rotateRight(currNode); // Left-outer grandchild is taller
+        } else {
+            _rotateLeftRight(currNode); // Left-inner grandchild is taller
+        }
+
+    } else if (balance > 1) { // Right Heavy
+        // Either do Left or Right-Left
+        int rightLeftHeight = currNode->right->left == nullptr ? 0 : currNode->right->left->height;
+        int rightRightHeight = currNode->right->right == nullptr ? 0 : currNode->right->right->height;
+
+        if (rightRightHeight >= rightLeftHeight) {
+            _rotateLeft(currNode); // Right-outer grandchild is taller
+        } else {
+            _rotateRightLeft(currNode); // Right-inner grandchild is taller
+        }
+
 
     }
+
+
 }
 
-int _getBalance(Node* currNode);
 
+void AVL::_rotateRight(Node* &currNode) {
 
+    Node* newNode = currNode->left;
+
+    currNode->left = newNode->right;
+    newNode->right = currNode;
+    currNode = newNode;
+
+}
+void AVL::_rotateLeftRight(Node* &currNode) {
+    _rotateLeft(currNode->left);
+    _rotateRight(currNode);
+}
+
+void AVL::_rotateLeft(Node* &currNode) {
+
+    Node* newNode = currNode->right;
+
+    currNode->right = newNode->left;
+    newNode->left = currNode;
+    currNode = newNode;
+
+}
+void AVL::_rotateRightLeft(Node* &currNode) {
+    _rotateRight(currNode->right);
+    _rotateLeft(currNode);
+}
 
 
 
@@ -172,6 +233,7 @@ int _getBalance(Node* currNode);
 
 
 void AVL::_updateHeight(Node* currNode) {
+    if (currNode == nullptr) {return;}
 
     currNode-> height = 1 + max(
         (currNode-> left == nullptr) ? 0 : currNode-> left-> height,

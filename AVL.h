@@ -17,7 +17,7 @@ class AVL : public AVLInterface {
 
     int max(int inputVar1, int inputVar2);
 
-    bool _insert(int data, Node* currNode);
+    bool _insert(int data, Node* &currNode);
 
     bool _search(int data, Node* currNode) const;
 
@@ -27,13 +27,15 @@ class AVL : public AVLInterface {
 
     int _getLargestValueInTree(Node* currNode);
 
-    void _rebalance(Node* currNode);
+    void _rebalance(Node* &currNode);
 
-    void _rotateRight(Node* currNode);
+    void _rotateRight(Node* &currNode);
+    void _rotateLeftRight(Node* &currNode);
 
-    void _rotateLeft(Node* currNode);
+    void _rotateLeft(Node* &currNode);
+    void _rotateRightLeft(Node* &currNode);
 
-    int _getBalance(Node* currNode);
+//    int _getBalance(Node* currNode);
 
     void _updateHeight(Node* currNode);
 
