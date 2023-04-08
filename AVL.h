@@ -52,6 +52,7 @@ public:
     Node* getRootNode() const;
 
     bool insert(int data);
+    bool insert(int data[], size_t size);
 
     bool remove(int data);
 

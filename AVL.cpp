@@ -49,6 +49,14 @@ bool AVL::_isLeaf(Node* currNode) {
     } else {return false;}
 }
 
+bool AVL::insert(int data[], size_t size) {
+
+    for (int i = 0; i < size; i++) {
+        insert(data[i]);
+    }
+    return true;
+}
+
 bool AVL::insert(int data) {
     if(rootNode == nullptr) {
         rootNode = new Node(data);
